@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Poetic Remedies</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main>
+    <div class="card-container">
+      <div class="card" id="card">
+        <div class="card-face front-face">
+          <img class="card-art" id="front-image" src="" alt="" style="display: none;" />
+          <div class="overlay">
+            <div class="idle-message" id="idle-message">
+                <p>What remedy calls to you?</p>
+            </div>
+            <div class="active-content" id="active-content" style="display: none;"></div>
+              <div class="title-top">
+                <h2 class="poetic-name"></h2>
+                <div class="remedy-name-overlay"></div>
+              </div>
+              <div class="description-bottom">
+                <p class="description"></p>
+              </div>
+            </div>
+          </div>
+        <div class="card-face back-face">
+          <div class="remedy-name-back"></div>
+        </div>
+      </div>
+    </div>
+
+    <button id="draw-button">Draw Card</button>
+    <audio id="flip-sound" src="audio/flip.mp3" preload="auto"></audio>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
