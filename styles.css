@@ -1,149 +1,184 @@
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-  }
-  
-  body {
-    font-family: sans-serif;
-    background: #fefefe;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 2rem;
-    min-height: 100vh;
-  }
+/* ✨ Welcome to the styles! 
+   This is where you control how the card looks and feels.
+   You can safely change colors, font sizes, and layout here. */
 
-  .idle-message {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    height: 100%;
-    font-size: 1.2rem;
-    font-style: italic;
-    color: #555;
-    padding: 1rem;
-  }
-  
-  .card-container {
-    perspective: 1000px;
-    width: 300px;
-    height: 450px;
-    margin-bottom: 1rem;
-  }
-  
-  .card {
-    width: 100%;
-    height: 100%;
-    position: relative;
-    transform-style: preserve-3d;
-    transition: transform 0.8s ease;
-    transform-origin: center center;
-  }
-  
-  .card.flipped {
-    transform: rotateY(180deg);
-  }
-  
-  .card-face {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    backface-visibility: hidden;
-    border-radius: 12px;
-    overflow: hidden;
-    background: white;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  }
-  
-  .front-face {
-    transform: rotateY(0deg);
-    position: relative;
-    z-index: 2;
-  }
-  
-  .back-face {
-    transform: rotateY(180deg);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.5rem;
-    padding: 1rem;
-    text-align: center;
-  }
-  
-  .card-art {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    z-index: 0;
-    pointer-events: none;
-  }
-  
-  .overlay {
-    position: absolute;
-    inset: 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    color: white;
-    z-index: 1;
-    padding: 1rem;
-    pointer-events: none;
-  }
-  
-  .title-top {
-    text-align: center;
-    margin-top: 0.5rem;
-    margin-bottom: auto;
-  }
-  
-  .poetic-name {
-    font-size: clamp(1.3rem, 5vw, 2rem);
-    font-weight: bold;
-  }
-  
-  .description-bottom {
-    background: linear-gradient(to top, rgba(0, 0, 0, 0.6), transparent);
-    padding: 1rem 0.5rem 0.5rem 0.5rem;
-  }
-  
-  .description {
-    font-size: clamp(0.9rem, 3.5vw, 1.2rem);
-    margin-bottom: 0.5rem;
-  }
-  
-  .remedy-name-overlay {
-    font-size: 1rem;
-    text-align: center;
-    font-style: italic;
-    margin-top: 0.25rem;
-    display: none;
-    color: rgba(255, 255, 255, 0.85);
-  }
-  
-  
-  .card.dual .remedy-name-overlay {
-    display: block;
-  }
-  
-  #draw-button {
-    padding: 0.6rem 1.2rem;
-    font-size: 1rem;
-    background: black;
-    color: white;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-  }
-  
-  #draw-button:hover {
-    background: #333;
-  }
-  
+/* === GLOBAL RESET & PAGE LAYOUT === */
+
+/* Reset margin/padding for all elements and use border-box sizing */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Basic page layout: center content vertically and horizontally */
+body {
+  font-family: sans-serif;
+  background: #fefefe;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  min-height: 100vh;
+}
+
+/* === IDLE STATE === */
+
+/* Message shown before any card is drawn */
+.idle-message {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  height: 100%;
+  font-size: 1.2rem;
+  font-style: italic;
+  color: #555;
+  padding: 1rem;
+}
+
+/* === CARD CONTAINER AND 3D FLIP SETUP === */
+
+/* Outer wrapper to give the card 3D perspective for flipping */
+.card-container {
+  perspective: 1000px; /* higher = more dramatic 3D */
+  width: 300px;
+  height: 450px;
+  margin-bottom: 1rem;
+}
+
+/* The card itself: handles 3D flipping */
+.card {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d; /* allow child faces to exist in 3D space */
+  transition: transform 0.8s ease; /* smooth flipping animation */
+  transform-origin: center center; /* rotate around center */
+}
+
+/* When card is flipped, rotate it 180 degrees along Y axis */
+.card.flipped {
+  transform: rotateY(180deg);
+}
+
+/* === CARD FACES (FRONT & BACK) === */
+
+/* Shared styles for both faces */
+.card-face {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden; /* hide the face when rotated away */
+  border-radius: 12px;
+  overflow: hidden;
+  background: white;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Front of the card */
+.front-face {
+  transform: rotateY(0deg);
+  position: relative;
+  z-index: 2;
+}
+
+/* Back of the card */
+.back-face {
+  transform: rotateY(180deg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  padding: 1rem;
+  text-align: center;
+}
+
+/* === CARD IMAGE AND OVERLAY === */
+
+/* Full-size background image */
+.card-art {
+  position: absolute;
+  inset: 0; /* top: 0; right: 0; bottom: 0; left: 0 */
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* cover the card without distortion */
+  z-index: 0;
+  pointer-events: none; /* don't let the image block clicks */
+}
+
+/* Overlay that contains all the text on the front */
+.overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* allow content to flow top-down */
+  color: white;
+  z-index: 1; /* above image, below interactive layers */
+  padding: 1rem;
+  pointer-events: none; /* let clicks go through */
+}
+
+/* === TITLE AND DESCRIPTION SECTIONS === */
+
+/* Top section with poetic name and (remedy name) */
+.title-top {
+  text-align: center;
+  margin-top: 0.5rem; /* adjust how close title is to top */
+  margin-bottom: auto; /* push other content downward */
+}
+
+.poetic-name {
+  font-size: clamp(1.3rem, 5vw, 2rem); /* responsive sizing */
+  font-weight: bold;
+}
+
+/* Bottom section with description */
+.description-bottom {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.6), transparent);
+  padding: 1rem 0.5rem 0.5rem 0.5rem;
+}
+
+.description {
+  font-size: clamp(0.9rem, 3.5vw, 1.2rem);
+  margin-bottom: 0.5rem;
+}
+
+/* Remedy name that appears in parentheses below poetic title (only in dual mode) */
+.remedy-name-overlay {
+  font-size: 1rem;
+  text-align: center;
+  font-style: italic;
+  margin-top: 0.25rem;
+  display: none;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+/* When in dual mode, show remedy name subtitle */
+.card.dual .remedy-name-overlay {
+  display: block;
+}
+
+/* === BUTTON STYLING === */
+
+#draw-button {
+  padding: 0.6rem 1.2rem;
+  font-size: 1rem;
+  background: black;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+#draw-button:hover {
+  background: #333;
+}

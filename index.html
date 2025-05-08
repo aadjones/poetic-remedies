@@ -1,41 +1,94 @@
+<!--
+✨ Poetic Remedies Oracle ✨
+
+This is the main HTML file that holds the structure of the app.
+You don’t need to know much HTML to make changes — everything here is labeled.
+
+What’s inside:
+- The card container (with front + back faces)
+- The overlay text areas for poetic name, remedy name, and description
+- A button to draw a new card
+- An audio element to play a flip sound
+
+You don’t need to touch the <head> unless you want to rename the title or add fonts.
+
+If you’re feeling brave, you can edit text or structure here.
+Otherwise, stick to editing remedies.json or styles.css — that’s where the fun lives!
+-->
+
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Poetic Remedies</title>
-  <link rel="stylesheet" href="styles.css" />
-</head>
-<body>
-  <main>
-    <div class="card-container">
-      <div class="card" id="card">
-        <div class="card-face front-face">
-          <img class="card-art" id="front-image" src="" alt="" style="display: none;" />
-          <div class="overlay">
-            <div class="idle-message" id="idle-message">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Poetic Remedies</title>
+
+    <!-- Link to the main stylesheet -->
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main>
+      <!-- Container that provides 3D perspective for the flipping card -->
+      <div class="card-container">
+        <div class="card" id="card">
+          <!-- FRONT FACE of the card -->
+          <div class="card-face front-face">
+            <!-- The remedy's artwork (initially hidden until a card is drawn) -->
+            <img
+              class="card-art"
+              id="front-image"
+              src=""
+              alt=""
+              style="display: none"
+            />
+
+            <!-- Overlay holds text content displayed on top of the artwork -->
+            <div class="overlay">
+              <!-- Idle message shown before a card is drawn -->
+              <div class="idle-message" id="idle-message">
                 <p>What remedy calls to you?</p>
-            </div>
-            <div class="active-content" id="active-content" style="display: none;"></div>
-              <div class="title-top">
-                <h2 class="poetic-name"></h2>
-                <div class="remedy-name-overlay"></div>
               </div>
-              <div class="description-bottom">
-                <p class="description"></p>
+
+              <!-- Content displayed after a card is drawn (initially hidden) -->
+              <div
+                class="active-content"
+                id="active-content"
+                style="display: none"
+              >
+                <!-- Top title section: poetic name and remedy name in parentheses -->
+                <div class="title-top">
+                  <h2 class="poetic-name"></h2>
+                  <div class="remedy-name-overlay"></div>
+                </div>
+
+                <!-- Bottom description section -->
+                <div class="description-bottom">
+                  <p class="description"></p>
+                </div>
               </div>
+              <!-- End of active content -->
             </div>
+            <!-- End of overlay -->
           </div>
-        <div class="card-face back-face">
-          <div class="remedy-name-back"></div>
+          <!-- End of front face -->
+
+          <!-- BACK FACE of the card (only shows the remedy name) -->
+          <div class="card-face back-face">
+            <div class="remedy-name-back"></div>
+          </div>
         </div>
+        <!-- End of card -->
       </div>
-    </div>
+      <!-- End of card-container -->
 
-    <button id="draw-button">Draw Card</button>
-    <audio id="flip-sound" src="audio/flip.mp3" preload="auto"></audio>
-  </main>
+      <!-- Draw Card button -->
+      <button id="draw-button">Draw Card</button>
 
-  <script src="script.js"></script>
-</body>
+      <!-- Flip sound (played on each click) -->
+      <audio id="flip-sound" src="audio/flip.mp3" preload="auto"></audio>
+    </main>
+
+    <!-- Link to main JavaScript file -->
+    <script src="script.js"></script>
+  </body>
 </html>

@@ -1,10 +1,25 @@
 # Poetic Remedies Oracle
 
-A poetic card-flip oracle where each remedy is embodied as a two-faced archetype. Click cycles through:
-1. Poetic front
-2. Back (remedy name)
-3. Front + remedy name
-...and repeats
+An interactive, poetic card deck that flips between:
+
+- a poetic archetype (front)
+- a remedy name (back)
+- and a dual state combining both
+
+Built with HTML, CSS, JS — no frameworks or build tools.
+
+## How to Run
+
+Just open `index.html` in a browser.
+
+## How to Add a Remedy
+
+Edit `remedies.json` and add a new entry with:
+
+- `poeticName`
+- `remedyName`
+- `description`
+- `image` (relative path to JPG/PNG)
 
 ## Directory Structure
 
@@ -13,16 +28,8 @@ A poetic card-flip oracle where each remedy is embodied as a two-faced archetype
 - `script.js` — state handling and dynamic rendering
 - `remedies.json` — remedy data (name, poetic title, description, image path)
 - `images/` — artwork assets
-- `audio/` — flip.mp3 sound
+- `audio/` — sound assets
 
-## Adding a Remedy
+## Credits
 
-Add an entry to `remedies.json`:
-
-```json
-{
-  "poeticName": "The Quiet Refusal",
-  "description": "Deeply self-insecure...",
-  "remedyName": "Silica Terra",
-  "image": "images/silica.png"
-}
+Designed and developed by AK & AA

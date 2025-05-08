@@ -1,15 +1,14 @@
 [
-    {
-      "remedyName": "Bryonia Alba",
-      "poeticName": "The Unmoving Survivalist",
-      "description": "Simple and straightforward, they're driven by a need for material security and work hard to maintain it. They can't tolerate disturbance—physical or psychological.",
-      "image": "images/bryonia-alba.jpg"
-    },
-    {
-      "remedyName": "Silica Terra",
-      "poeticName": "The Quite Refusal",
-      "description": "Deeply self-insecure and unassertive but quietly stubborn. No stamina so fails to thrive.",
-      "image": "images/silica-terra.jpg"
-    }
-  ]
-  
+  {
+    "remedyName": "Bryonia Alba",
+    "poeticName": "The Unmoving Survivalist",
+    "description": "Simple and straightforward, they're driven by a need for material security and work hard to maintain it. They can't tolerate disturbance—physical or psychological.",
+    "image": "images/bryonia-alba.jpg"
+  },
+  {
+    "remedyName": "Silica Terra",
+    "poeticName": "The Quite Refusal",
+    "description": "Deeply self-insecure and unassertive but quietly stubborn. No stamina so fails to thrive.",
+    "image": "images/silica-terra.jpg"
+  }
+]
