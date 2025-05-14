@@ -168,6 +168,11 @@ body {
 }
 
 /* === BUTTON STYLING === */
+.button-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 1.5rem; /* space between card and button */
+}
 
 #draw-button {
   padding: 0.6rem 1.2rem;
